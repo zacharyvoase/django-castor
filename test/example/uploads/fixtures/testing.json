@@ -1,0 +1,10 @@
+[
+    {
+        "fields": {
+            "created": "2010-04-07 09:26:58", 
+            "file": "60fde9c2310b0d4cad4dab8d126b04387efba289.txt"
+        }, 
+        "model": "uploads.upload", 
+        "pk": 1
+    }
+]
