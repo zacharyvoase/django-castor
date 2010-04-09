@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 
-import hashlib
 import os
 
 from django.core.exceptions import SuspiciousOperation
 from django.core.files.storage import FileSystemStorage
 from django.utils._os import safe_join
-from django.utils.encoding import force_unicode, smart_str
+from django.utils.encoding import smart_str
 
 from djcastor import utils
 
