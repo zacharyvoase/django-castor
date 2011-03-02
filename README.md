@@ -7,7 +7,7 @@ under their SHA-1 digest.
 
 *   No matter how many times the same file is uploaded, it will only ever be
     stored once, thus eliminating redundancy.
-    
+
 *   Filenames are pseudorandom and made up only of hexadecimal characters, so
     you don’t have to worry about filename collisions or sanitization.
 
@@ -32,7 +32,7 @@ Basic usage is as follows:
 
     from django.db import models
     from djcastor import CAStorage
-    
+
     class MyModel(models.Model):
         ...
         uploaded_file = models.FileField(storage=CAStorage(),
@@ -45,7 +45,7 @@ destination for uploaded files, use the `location` parameter (see below).
 For extended usage, there are several options you can pass to the `CAStorage`
 constructor. The first two are inherited from the built-in `FileSystemStorage`:
 
-*   `location`: The absolute path to the directory that will hold uploaded 
+*   `location`: The absolute path to the directory that will hold uploaded
     files. If omitted, this will be set to the value of the `MEDIA_ROOT`
     setting.
 
@@ -60,15 +60,15 @@ constructor. The first two are inherited from the built-in `FileSystemStorage`:
 *   `sharding` (default `(2, 2)`): The width and depth to use when sharding
     digests, expressed as a two-tuple. The following examples show how these
     parameters affect the sharding:
-    
+
         >>> digest = '1f09d30c707d53f3d16c530dd73d70a6ce7596a9'
-        
+
         >>> print shard(digest, width=2, depth=2)
         1f/09/1f09d30c707d53f3d16c530dd73d70a6ce7596a9
-        
+
         >>> print shard(digest, width=2, depth=3)
         1f/09/d3/1f09d30c707d53f3d16c530dd73d70a6ce7596a9
-        
+
         >>> print shard(digest, width=3, depth=2)
         1f0/9d3/1f09d30c707d53f3d16c530dd73d70a6ce7596a9
 
