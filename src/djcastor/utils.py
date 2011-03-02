@@ -87,13 +87,12 @@ def shard(string, width, depth, rest_only=False):
 def rm_file_and_empty_parents(filename, root=None):
     """Delete a file, keep removing empty parent dirs up to `root`."""
 
-    root_stat = None
     if root:
         root_stat = os.stat(root)
 
     os.unlink(filename)
     directory = os.path.dirname(filename)
-    while not os.path.samestat(root_stat, os.stat(directory)):
+    while not (root and os.path.samestat(root_stat, os.stat(directory))):
         if os.listdir(directory):
             break
         os.rmdir(directory)
