@@ -106,12 +106,18 @@ class CAStorage(FileSystemStorage):
 
     def url(self, name):
         return super(CAStorage, self).url('/'.join(self.shard(name)))
-    
-    def delete(self, name):
-        # Ignore deletions; we don't know how many different records point to
-        # one file.
-        pass
-    
+
+    def delete(self, name, sure=False):
+        if not sure:
+            # Ignore automatic deletions; we don't know how many different
+            # records point to one file.
+            return
+
+        path = name
+        if os.path.sep not in path:
+            path = self.path(name)
+        utils.rm_file_and_empty_parents(path, root=self.location)
+
     def _save(self, name, content):
         digest = self.digest(content)
         if self.keep_extension:
