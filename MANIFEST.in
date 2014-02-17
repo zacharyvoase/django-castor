@@ -1,1 +1,2 @@
-include distribute_setup.py
+include README.md
+include UNLICENSE
