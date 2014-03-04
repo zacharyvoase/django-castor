@@ -2,4 +2,4 @@
 
 from djcastor.storage import CAStorage
 
-__version__ = '0.1'
+__version__ = '0.2.0'
