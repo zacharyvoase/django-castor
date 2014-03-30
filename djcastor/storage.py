@@ -68,7 +68,7 @@ class CAStorage(FileSystemStorage):
         # Avoid a confusing issue when you don't have a trailing slash: URLs
         # are generated which point to the parent. This is due to the behavior
         # of `urlparse.urljoin()`.
-        if not base_url.endswith('/'):
+        if base_url is not None and not base_url.endswith('/'):
             base_url += '/'
 
         super(CAStorage, self).__init__(location=location, base_url=base_url)
